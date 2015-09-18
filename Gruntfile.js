@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
     clean: {
       build: ['output/'],
-      dist: ['*.jar'] 
+      dist: ['*.jar']
     },
 
     copy: {
@@ -74,7 +74,10 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['input/**/*'],
-        tasks: ['build']
+        tasks: ['build'],
+        options: {
+          livereload: 35729
+        }
       },
     },
 
@@ -107,7 +110,7 @@ module.exports = function(grunt) {
           { expand: true, cwd: 'output/assets/', src: "**/*", filter: "isFile" },
           { expand: true, cwd: 'output/', src: "templates/**/*", filter: "isFile" }
         ]
-      }      
+      }
     },
 
     'gh-pages': {
@@ -115,7 +118,7 @@ module.exports = function(grunt) {
         message: "Deploy to GitHub Pages",
         user: {
           name: 'automation-commercetools',
-          email: 'automation@commercetools.de'          
+          email: 'automation@commercetools.de'
         },
         repo: 'https://' + process.env.GH_TOKEN + '@github.com/sphereio/sphere-sunrise-design.git',
         silent: true,
